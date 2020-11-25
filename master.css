@@ -1,0 +1,56 @@
+﻿body {
+    margin: 0 auto;
+    max-width: 900px;
+}
+
+img {
+    border: none;
+}
+
+.header {
+    border-top: 12px solid #3B78A4;
+    border-bottom: 12px solid #3B78A4;
+}
+
+.headermenuitem:hover {
+    color: Red !important;
+}
+
+.siteMapPath {
+    padding-left: 10px;
+    font-family: Calibri;
+    border: none;
+}
+
+.siteMapPath .currentNodeStyle {
+    text-decoration: none;
+    color: black;
+}
+
+.siteMapPath .nodeStyle {
+    text-decoration: none;
+    color: black;
+}
+
+.siteMapPath .nodeStyle:hover {
+    color: Red !important;
+}
+
+.siteMapPath .rootNodeStyle {
+    text-decoration: none;
+    color: black;
+}
+
+.siteMapPath .rootNodeStyle:hover {
+    color: Red !important;
+    margin-bottom: 10px;
+}
+
+.side {
+    margin-top:20px;
+}
+
+.dropdownkennzeichen {
+    float: right;
+    margin-right: 45px;
+}

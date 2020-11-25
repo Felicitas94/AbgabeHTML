@@ -1,0 +1,64 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="masterpage.Master.cs" Inherits="CarMa_ASP.Masterpage" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <link href="App_Themes/Design/master.css" rel="stylesheet" />
+    <asp:ContentPlaceHolder ID="head" runat="server" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <script type="text/javascript" src="Javascript/CarMaScript.js">
+    </script>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <asp:SiteMapDataSource ID="SiteMapDataSource"
+        runat="server"
+        ShowStartingNode="false"
+        StartFromCurrentNode="true"/>
+        <asp:SqlDataSource ID="SqlDataSourceCarMaKennzeichen"
+            runat="server"
+            ConnectionString='<%$ ConnectionStrings:CarMaConnectionString %>' 
+            SelectCommand="spSelectFahrzeugKennzeichen" 
+            SelectCommandType="StoredProcedure" />
+
+    <div class="header">
+        <asp:Image ID="logo"
+            runat="server"
+            AlternateText="Logo"
+            ImageUrl="~/images/BNA_C_M.gif" />
+    </div>
+    <asp:ContentPlaceHolder ID="menue" runat="server"/>
+    <div class="side">
+    <asp:SiteMapPath ID="pathmap"
+        RenderCurrentNodeAsLink="false"
+        PathSeparator=" → "
+        runat="server"
+        CssClass="siteMapPath"
+        CurrentNodeStyle-CssClass="currentNodeStyle"
+		NodeStyle-CssClass="nodeStyle"
+		PathSeparatorStyle-CssClass="pathSeparatorStyle"
+		RootNodeStyle-CssClass="rootNodeStyle">
+        <RootNodeTemplate>
+            <asp:HyperLink ID="HyperLink1"
+                runat="server"
+                ImageUrl="~/images/icon_home.png" 
+                NavigateUrl="~/index.aspx" />
+        </RootNodeTemplate>
+    </asp:SiteMapPath>
+        <asp:DropDownList ID="DropDownListKfzKennzeichen" 
+            runat="server" 
+            AutoPostBack="True" 
+            DataSourceID="SqlDataSourceCarMaKennzeichen" 
+            DataTextField="kennzeichen" 
+            DataValueField="kennzeichen" 
+            OnSelectedIndexChanged="DropDownListKfzKennzeichen_SelectedIndexChanged"
+            OnDataBound="DropDownListKfzKennzeichen_DataBound" 
+            CssClass="dropdownkennzeichen"/>
+    </div>
+    <div>
+        <asp:ContentPlaceHolder ID="body" runat="server"/>
+    </div>
+    </form>
+</body>
+</html>
